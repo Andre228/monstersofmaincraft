@@ -1,0 +1,19 @@
+#sign-up
+{
+  margin-top: 70px;
+}
+
+
+
+label {
+  width: 40px;
+  display: inline-block
+}
+
+input.ng-touched.ng-invalid{
+  border-color: red;
+}
+
+.error{
+  color: red;
+}
