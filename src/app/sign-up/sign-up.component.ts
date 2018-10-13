@@ -38,30 +38,23 @@ export class SignUpComponent implements OnInit {
   onSubmit(usname: string, em: string, passw: string ) {
 
       let usersarr: User [] = [];
-      if(usersarr =  JSON.parse(localStorage.getItem('users'))) {
-        this.username = usname;
-        this.email = em;
-        this.password = passw;
-        this.user = new User(this.username, this.email, this.password, this.role);
-        console.log(this.username);
-
-        usersarr.push(this.user);
-        //localStorage.clear();
+      usersarr =  JSON.parse(localStorage.getItem('users'));
+      if(usersarr === null) {
+       let sss: User [] = [{username: usname,
+          email: em,
+          password: passw,
+          role: this.role}];
         sessionStorage.setItem("hois", JSON.stringify(this.user));
-
-        localStorage.setItem("users", JSON.stringify(usersarr));
+        localStorage.setItem("users", JSON.stringify(sss));
         this.router.navigate(['/home-page']);
-        //this.router.navigate(['/edit-data']);
+
       }
       else {
         this.username = usname;
         this.email = em;
         this.password = passw;
         this.user = new User(this.username, this.email, this.password, this.role);
-        console.log(this.username);
-
         usersarr.push(this.user);
-        //localStorage.clear();
         sessionStorage.setItem("hois", JSON.stringify(this.user));
         localStorage.setItem("users", JSON.stringify(usersarr));
         this.router.navigate(['/home-page']);
