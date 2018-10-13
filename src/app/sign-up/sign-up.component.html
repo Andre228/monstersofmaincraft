@@ -1,5 +1,5 @@
-<form  [formGroup]="userForm" form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(username1.value,emailadr.value, passw.value)"  >
-  <div class="form-group row">
+<form id="fm"  [formGroup]="userForm" form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(username1.value,emailadr.value, passw.value)" class="col-sm-6" >
+  <div class="form-group row user">
     <label  class="col-sm-2 col-form-label">Username</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" #username1  placeholder="User name" name = "username" [(ngModel)]="username"  formControlName="usn">

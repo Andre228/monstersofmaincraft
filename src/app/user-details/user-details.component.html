@@ -1,28 +1,28 @@
 
-<div *ngIf="usercurrent">
+<div *ngIf="usercurrent" >
 
   <label  class="col-sm-2 col-form-label">{{user.username}}</label>
-  <div class="col-sm-10" *ngIf="usercurrent.role">
-    <input type="text" class="form-control"   placeholder="Username name"  #usernameVal>
-    <button (click)="editName(usernameVal.value, user)">Edit username</button>
+  <div class="col-sm-10 " *ngIf="usercurrent.role">
+    <input type="text" class="form-control" placeholder="Username name"  #usernameVal >
+    <button (click)="editName(usernameVal.value, user)" class="btn btn-primary btnuser">Edit username</button>
   </div>
   <label  class="col-sm-2 col-form-label">{{user.email}}</label>
-  <div class="col-sm-10" *ngIf="usercurrent.role">
-    <input type="text" class="form-control" placeholder="Email" #emailVal>
-    <button (click)="editEmail(emailVal.value, user)">Edit email</button>
+  <div class="col-sm-10 " *ngIf="usercurrent.role">
+    <input type="text" class="form-control" placeholder="Email" #emailVal >
+    <button (click)="editEmail(emailVal.value, user)" class="btn btn-primary btnuser" >Edit email</button>
   </div>
 
   <label  class="col-sm-2 col-form-label">{{user.password}}</label>
-  <div class="col-sm-10" *ngIf="usercurrent.role">
-    <input type="text" class="form-control"   placeholder="Password" #passVal>
-    <button (click)="editPassword(passVal.value, user)">Edit password</button>
+  <div class="col-sm-10 " *ngIf="usercurrent.role">
+    <input type="text" class="form-control"   placeholder="Password" #passVal >
+    <button (click)="editPassword(passVal.value, user)" class="btn btn-primary btnuser" >Edit password</button>
   </div>
 
 
 
   <fieldset class="form-group">
     <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Roles</legend>
+      <legend class="col-form-label col-sm-2 pt-0" id="lb">Roles</legend>
       <div class="col-sm-10">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"  (click)="isadmin()" [checked]="user.role" >
@@ -40,7 +40,15 @@
     </div>
   </fieldset>
   <div class="col-sm-10" *ngIf="usercurrent.role">
-    <button (click)="editRole(user)">Save role</button>
+    <button (click)="editRole(user)" (mouseenter)="mouseEnter()" (mouseleave) ="mouseLeave()" class="btn btn-primary btnuser">Save role</button>
+  </div>
+
+  <div class="error" *ngIf="daunstr">
+    {{daunstr}}
+  </div>
+
+  <div class="error" *ngIf="daunstr && rightdaun">
+    {{rightdaun}}
   </div>
 
 

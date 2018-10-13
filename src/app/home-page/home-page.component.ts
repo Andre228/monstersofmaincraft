@@ -102,7 +102,7 @@ export class HomePageComponent implements OnInit {
     {
       if(this.usersarr === null)
       {
-        users.push(new User(username,"username","12345", false));
+        users.push(new User(username,"aaaa@mail.ru","12345", false));
         this.user = JSON.parse(sessionStorage.getItem('hois'));
         localStorage.setItem("users", JSON.stringify(users));
         this.usersarr = JSON.parse(localStorage.getItem("users"));

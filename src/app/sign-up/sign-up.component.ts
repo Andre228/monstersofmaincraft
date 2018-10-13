@@ -47,6 +47,7 @@ export class SignUpComponent implements OnInit {
 
         usersarr.push(this.user);
         //localStorage.clear();
+        sessionStorage.setItem("hois", JSON.stringify(this.user));
 
         localStorage.setItem("users", JSON.stringify(usersarr));
         this.router.navigate(['/home-page']);
@@ -61,7 +62,7 @@ export class SignUpComponent implements OnInit {
 
         usersarr.push(this.user);
         //localStorage.clear();
-
+        sessionStorage.setItem("hois", JSON.stringify(this.user));
         localStorage.setItem("users", JSON.stringify(usersarr));
         this.router.navigate(['/home-page']);
 

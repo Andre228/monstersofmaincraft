@@ -1,16 +1,11 @@
 
-<input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search..." [(ngModel)]="searchStr">
-<div class="col">
+<input class="form-control col-xs-4 ff" type="search" placeholder="Search..." [(ngModel)]="searchStr">
 
-</div>
 <form id ="formofmonsters" class = "col-lg-8 " *ngIf="user" >
   <div class="list-group" id="listofmonsters" *ngIf="monsterarr">
-    <a  class="list-group-item list-group-item-action list-group-item-dark  listmonsters" *ngFor = "let m of monsterarr | search: searchStr"  (click)="onSelectMonster(m)" [class.selected]="m === selectedMonster" (dblclick)="moredetails(m)"  >{{m.name}}
+    <a  class="list-group-item list-group-item-action list-group-item-dark  " *ngFor = "let m of monsterarr | search: searchStr"  (click)="onSelectMonster(m)" [class.selected]="m === selectedMonster" (dblclick)="moredetails(m)"  >{{m.name}}
     </a>
   </div>
-
-
-
 
   <div class="list-group" id="listusers" *ngIf="usersarr">
     <a  class="list-group-item list-group-item-action list-group-item-dark " *ngFor = "let u of usersarr | searchUser: searchStr " (click)="onSelect(u)" [class.selected]="u === selectedUser" (dblclick)="moredetailsUser(u)" >{{u.username}}
@@ -20,24 +15,32 @@
 <hr>
 
 
-<div class="control-panel" *ngIf="flag && user.role">
+<div class="control-panel " *ngIf="flag && user.role">
   <a href="#openModal">Add a monster</a>
+  <button  class="btn btn-primary" (click)="deleteMonster(selectedMonster)">Delete a monster </button>
   <div id="openModal" class="modalDialog">
     <div id="ss">
       <a href="#close" title="Close" class="close" (click)="create(inputVal.value)">X</a>
       <input class="monster-input form-control" type="text" placeholder ="Enter monster name" #inputVal>
     </div>
   </div>
-  <button (click)="deleteMonster(selectedMonster)">Delete a monster </button>
+</div>
 
-  <div >
-    <button (click)="createUser(inputValUser.value)">Add a user </button>
-    <button (click)="deleteUser(selectedUser)">Delete a user </button>
-      <input class="col-sm-3" type="text" placeholder ="Enter username" #inputValUser [(ngModel)]="checkuserstate" (change)="ngOnChanges($event)">
+<!--
+<div class="usercontrol" >
+  <button class="btn btn-primary" (click)="createUser(inputValUser.value)">Add a user </button>
+  <button id="bt2" class="btn btn-primary" (click)="deleteUser(selectedUser)">Delete a user </button>
+  <input class="inptadd input-group input-group-sm mb-3" type="text" placeholder ="Enter username" #inputValUser [(ngModel)]="checkuserstate" (change)="ngOnChanges($event)">
+</div>-->
+<div class=" usercontrol" *ngIf="flag && user.role">
+  <div class="input-group-prepend">
+    <button class="btn btn-outline-secondary" type="button" (click)="createUser(inputValUser.value)">Add a user </button>
+    <button id="bt2" class="btn btn-outline-secondary" type="button" (click)="deleteUser(selectedUser)">Delete a user</button>
   </div>
-  <div class="error" *ngIf="nameready" style="color: red">
-    {{nameready}}
-  </div>
+  <input type="text" id="inpt2" placeholder="Enter username" aria-label="" aria-describedby="basic-addon1"#inputValUser [(ngModel)]="checkuserstate" (change)="ngOnChanges($event)">
+</div>
+<div class="error" *ngIf="nameready" style="color: red">
+  {{nameready}}
 </div>
 
 

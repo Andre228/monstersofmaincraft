@@ -10,8 +10,10 @@ import {User} from "../user";
 export class UserDetailsComponent implements OnInit {
 
 
-  user:User;
+  user: User;
   usercurrent: User;
+  daunstr: string;
+  rightdaun: string;
   role: boolean;
   constructor(private _userservice: UserService) { }
 
@@ -23,10 +25,14 @@ export class UserDetailsComponent implements OnInit {
   isuser()
   {
     this.role = false;
+    if(this.usercurrent.username === this._userservice.getUser().username) {
+      this.daunstr = "Дурак?";
+    }
   }
   isadmin()
   {
     this.role = true;
+    this.daunstr = "";
   }
   editName(str: string, user: User): void
   {
@@ -81,16 +87,42 @@ export class UserDetailsComponent implements OnInit {
   }
   editRole(user: User):void
   {
-    let userarr: User [] = JSON.parse(localStorage.getItem("users"));
-    let newarray: User [] = [];
-    for (var i in userarr) {
-      if (userarr[i].username === user.username) {
-        userarr[i].role = this.role;
+    if(this.usercurrent.username === user.username)
+    {
+      let userarr: User [] = JSON.parse(localStorage.getItem("users"));
+      let newarray: User [] = [];
+      for (var i in userarr) {
+        if (userarr[i].username === user.username) {
+          userarr[i].role = this.role;
+          sessionStorage.setItem("hois", JSON.stringify(userarr[i]));
+        }
+        newarray [i] = userarr[i];
       }
-      newarray [i] = userarr[i];
-    }
-    localStorage.setItem("users", JSON.stringify(newarray));
 
+      localStorage.setItem("users", JSON.stringify(newarray));
+    }
+    else {
+      let userarr: User [] = JSON.parse(localStorage.getItem("users"));
+      let newarray: User [] = [];
+      for (var i in userarr) {
+        if (userarr[i].username === user.username) {
+          userarr[i].role = this.role;
+        }
+        newarray [i] = userarr[i];
+      }
+      localStorage.setItem("users", JSON.stringify(newarray));
+    }
+
+  }
+  mouseEnter(): string
+  {
+    this.rightdaun = "Точно даун";
+    return this.rightdaun;
+  }
+  mouseLeave()
+  {
+    this.rightdaun = "Одумался";
+    return this.rightdaun;
   }
 
 }

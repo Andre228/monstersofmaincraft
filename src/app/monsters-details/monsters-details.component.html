@@ -4,25 +4,25 @@
   <label  class="col-sm-2 col-form-label">Name: {{monster.name}}</label>
   <div class="col-sm-10" [hidden]="!user.role">
     <input type="text" class="form-control"   placeholder="Monster name"  #nameVal>
-    <button (click)="editName(nameVal.value, monster)">Edit name</button>
+    <button (click)="editName(nameVal.value, monster)" class="btn btn-primary btnuser">Edit name</button>
   </div>
   <label  class="col-sm-2 col-form-label">Danger: {{monster.danger}}</label>
   <div class="col-sm-10" [hidden]="!user.role">
     <input type="text" class="form-control" placeholder="Danger" #dangerVal>
-    <button (click)="editDanger(dangerVal.value, monster)" >Edit danger</button>
+    <button (click)="editDanger(dangerVal.value, monster)" class="btn btn-primary btnuser" >Edit danger</button>
   </div>
 
   <label  class="col-sm-2 col-form-label">Level: {{monster.level}}</label>
   <div class="col-sm-10" [hidden]="!user.role">
     <input type="text" class="form-control"   placeholder="Level" #levelVal>
-    <button (click)="editLevel(levelVal.value, monster)" >Edit level</button>
+    <button (click)="editLevel(levelVal.value, monster)" class="btn btn-primary btnuser">Edit level</button>
   </div>
 
 
   <div class="col-sm-10 description" >
     <label  class="col-sm-2 col-form-label description1">Description</label>
-    <textarea class="form-control"  [value]="monster.description"  #descVal ></textarea>
-    <button (click)="editDescription(descVal.value, monster)" [hidden] = "!user.role">Save description</button>
+    <textarea class="form-control"  [value]="monster.description"  #descVal id="desc"></textarea>
+    <button (click)="editDescription(descVal.value, monster)" [hidden] = "!user.role" class="btn btn-primary btnuser">Save description</button>
   </div>
 
 </div>
